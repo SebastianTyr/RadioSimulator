@@ -1,0 +1,57 @@
+﻿@model RadioModel
+
+<h2>Register your radios</h2>
+
+<div id="success-alert" class="alert alert-success" style="display: none">Radio registered!</div>
+@*TODO: ajax form handling*@
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="Name">Radio name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type">Radio Type</label>
+
+        <select asp-for="Type" class="form-control">
+            Choose radio type
+            <option value="MobileDevice">Mobile Device</option>
+            <option value="CarDevice">Car Device</option>
+            <option value="BaseStation">Base Station</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SerialNumber">Serial Number</label>
+        <input asp-for="SerialNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SignalStrength">Signal Strength</label>
+        <input asp-for="SignalStrength" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BatteryLevel">Battery Level</label>
+        <input asp-for="BatteryLevel" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mode">Radio Type</label>
+
+        <select asp-for="Mode" class="form-control">
+            Choose radio type
+            <option value="VoiceCall">Voice Call</option>
+            <option value="DataTransit">Data Transit</option>
+            <option value="Idle">Idle</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Register" />
+    </div>
+
+</form>
