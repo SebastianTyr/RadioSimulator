@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RadioConsole.Web.Models.Enums;
 using RadioConsole.Web.Models;
+using RadioConsole.Web.Models.Validators;
 
 namespace RadioConsole.Web.Controllers
 {
@@ -22,8 +23,13 @@ namespace RadioConsole.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RadioModel model)
+        public async Task<IActionResult> Register(RadioModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             return View("RegisterConfirmation");
         }
 

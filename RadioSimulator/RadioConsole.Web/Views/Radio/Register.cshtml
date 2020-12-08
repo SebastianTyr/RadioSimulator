@@ -3,12 +3,13 @@
 <h2>Register your radios</h2>
 
 <div id="success-alert" class="alert alert-success" style="display: none">Radio registered!</div>
-@*TODO: ajax form handling*@
+<div id="error-alert" class="alert alert-danger" style="display: none">Ups.. something goes wrong while registering radio, make sure that all fields are filed properly</div>
 
 <form method="POST">
     <div class="form-group">
         <label asp-for="Name">Radio name</label>
         <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
     </div>
 
     <div class="form-group">
@@ -21,21 +22,26 @@
             <option value="BaseStation">Base Station</option>
         </select>
 
+        <span asp-validation-for="Type"></span>
+
     </div>
 
     <div class="form-group">
         <label asp-for="SerialNumber">Serial Number</label>
         <input asp-for="SerialNumber" class="form-control" />
+        <span asp-validation-for="SerialNumber"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="SignalStrength">Signal Strength</label>
         <input asp-for="SignalStrength" class="form-control" />
+        <span asp-validation-for="SignalStrength"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="BatteryLevel">Battery Level</label>
         <input asp-for="BatteryLevel" class="form-control" />
+        <span asp-validation-for="BatteryLevel"></span>
     </div>
 
     <div class="form-group">
@@ -48,6 +54,8 @@
             <option value="Idle">Idle</option>
         </select>
 
+        <span asp-validation-for="Mode"></span>
+
     </div>
 
     <div class="form-group">
@@ -55,3 +63,12 @@
     </div>
 
 </form>
+
+<div>
+    <input type="button" id="btn view-button" value="View registered radio" />
+</div>
+
+@section scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/registerNewRadio.js"></script>
+}

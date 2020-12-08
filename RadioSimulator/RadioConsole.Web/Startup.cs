@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using RadioConsole.Web.Models;
+using RadioConsole.Web.Models.Validators;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RadioConsole.Web
 {
@@ -24,6 +29,15 @@ namespace RadioConsole.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddMvc().AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssemblyContaining<RadioModelValidator>();
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            //services.AddTransient<IValidator<RadioModel>, RadioModelValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
