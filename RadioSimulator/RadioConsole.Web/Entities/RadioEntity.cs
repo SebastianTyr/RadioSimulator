@@ -1,9 +1,9 @@
 ﻿using RadioConsole.Web.Models.Enums;
 using Type = RadioConsole.Web.Models.Enums.Type;
 
-namespace RadioConsole.Web.Models
+namespace RadioConsole.Web.Entities
 {
-    public class RadioModel
+    public class RadioEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

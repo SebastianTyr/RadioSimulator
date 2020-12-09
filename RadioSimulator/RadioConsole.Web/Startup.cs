@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
-using RadioConsole.Web.Models;
 using RadioConsole.Web.Models.Validators;
+using RadioConsole.Web.Database;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace RadioConsole.Web
@@ -36,6 +37,8 @@ namespace RadioConsole.Web
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            services.AddDbContext<RadioDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RadioSimulator")));
 
             //services.AddTransient<IValidator<RadioModel>, RadioModelValidator>();
         }
