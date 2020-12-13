@@ -90,6 +90,9 @@
             <td>@item.SignalStrength</td>
             <td>@item.BatteryLevel</td>
             <td>@item.Mode</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
     }
 </table>

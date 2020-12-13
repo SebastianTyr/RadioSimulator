@@ -1,5 +1,6 @@
 ﻿using RadioConsole.Web.Models.Enums;
 using Type = RadioConsole.Web.Models.Enums.Type;
+using RadioConsole.Web.Models;
 
 namespace RadioConsole.Web.Entities
 {

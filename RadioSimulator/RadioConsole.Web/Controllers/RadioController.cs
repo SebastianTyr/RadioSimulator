@@ -59,5 +59,13 @@ namespace RadioConsole.Web.Controllers
         {
             return View(radioId);
         }
+
+        public async Task<IActionResult> Delete(RadioEntity radio)
+        {
+            _dbContext.Delete(radio);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Register");
+        }
     }
 }
