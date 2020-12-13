@@ -2,8 +2,8 @@
     let formData = new FormData(document.forms[0]);
     let alertEl = document.getElementById('success-alert');
     let errorEl = document.getElementById('error-alert');
-    fetch('', {
-        method: 'post',
+    fetch('/Radio/Register', {
+        method: 'POST',
         body: new URLSearchParams(formData)
     })
         .then(() => {

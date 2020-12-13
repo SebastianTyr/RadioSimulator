@@ -1,3 +1,28 @@
-﻿@model int
+﻿@model RadioModel
 
-<h2>Congratulations! You registered your first radio!</h2>
+<table style="width: 100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Type</th>
+        <th>Signal Strength</th>
+        <th>Battery Level</th>
+        <th>Mode</th>
+    </tr>
+    @foreach (var item in ViewBag.Items)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.SerialNumber</td>
+            <td>@item.Type</td>
+            <td>@item.SignalStrength</td>
+            <td>@item.BatteryLevel</td>
+            <td>@item.Mode</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

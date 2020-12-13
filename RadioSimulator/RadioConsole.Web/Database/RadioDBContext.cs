@@ -16,7 +16,7 @@ namespace RadioConsole.Web.Database
         public RadioEntity Delete(RadioEntity deletedRadio)
         {
             var entity = Radios.Attach(deletedRadio);
-            entity.State = EntityState.Deleted;
+            entity.Context.Entry(deletedRadio).State = EntityState.Deleted;
             return deletedRadio;
         }
 

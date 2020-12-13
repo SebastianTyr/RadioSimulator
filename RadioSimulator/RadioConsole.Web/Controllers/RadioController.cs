@@ -26,7 +26,6 @@ namespace RadioConsole.Web.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.Items = _dbContext.Radios;
             return View();
         }
 
@@ -51,15 +50,19 @@ namespace RadioConsole.Web.Controllers
             _dbContext.Add(radioEntity);
             await _dbContext.SaveChangesAsync();
 
-            return View("RegisterConfirmation");
+            //return View("RegisterConfirmatron");
+            //return RedirectToAction("Register");
+            return RedirectToAction("RegisterConfirmation");
         }
 
         [HttpGet]
-        public IActionResult RegisterConfirmation(int radioId)
+        public IActionResult RegisterConfirmation()
         {
-            return View(radioId);
+            ViewBag.Items = _dbContext.Radios;
+            return View();
         }
 
+        //[HttpPost, ActionName("Delete")]
         public async Task<IActionResult> Delete(RadioEntity radio)
         {
             _dbContext.Delete(radio);
@@ -67,5 +70,18 @@ namespace RadioConsole.Web.Controllers
 
             return RedirectToAction("Register");
         }
+
+        //[HttpPost, ActionName("Delete")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    RadioEntity radio = _dbContext.Radios
+        //                        .Where(i => i.Id == id)
+        //                        .Single();
+
+        //    _dbContext.Radios.Remove(radio);
+        //    await _dbContext.SaveChangesAsync();
+
+        //    return RedirectToAction("Register");
+        //}
     }
 }
