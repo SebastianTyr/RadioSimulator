@@ -9,7 +9,7 @@
 <div id="success-alert" class="alert alert-success" style="display: none">Radio registered!</div>
 <div id="error-alert" class="alert alert-danger" style="display: none">Ups.. something goes wrong while registering radio, make sure that all fields are filed properly</div>
 
-<form method="POST">
+<form method="POST" id="formData">
     <div class="form-group">
         <label asp-for="Name">Radio name</label>
         <input asp-for="Name" class="form-control" v-model="Name" />
@@ -75,44 +75,6 @@
 <br />
 
 @*   Open street maps to be added  *@
-@*<div id="openstreetMap"></div>
-
-<script>function RadioMap() {
-    var mapProp = {
-        center: new opensteet.maps.LatLng(50.049683, 19.944544), zoom: 5,
-        };
-        var map = new openstreet.maps.Map(document.getElementById("openstreetMap"), mapProp);
-    }
-</script>
-
-<script src="https://www.openstreetmap.org/#map=13/40.6206/22.8749"></script>*@
-
-@*<table style="width: 100%">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Serial Number</th>
-            <th>Type</th>
-            <th>Signal Strength</th>
-            <th>Battery Level</th>
-            <th>Mode</th>
-        </tr>
-        @foreach (var item in ViewBag.Items)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.SerialNumber</td>
-                <td>@item.Type</td>
-                <td>@item.SignalStrength</td>
-                <td>@item.BatteryLevel</td>
-                <td>@item.Mode</td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </table>*@
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
