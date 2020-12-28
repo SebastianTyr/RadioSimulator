@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using FluentValidation.AspNetCore;
 using RadioConsole.Web.Models.Validators;
 using RadioConsole.Web.Database;
+using RadioConsole.Web.Models.EmailService;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,11 @@ namespace RadioConsole.Web
             services.AddDbContext<RadioDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RadioSimulator")));
 
             //services.AddTransient<IValidator<RadioModel>, RadioModelValidator>();
+
+            var emailConfig = Configuration.GetSection("EmailConfigModel").Get<EmailConfigModel>();
+            services.AddSingleton(emailConfig);
+
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
