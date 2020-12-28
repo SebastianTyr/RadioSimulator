@@ -1,36 +1,17 @@
-﻿var map = new ol.Map({
-    target: 'map',
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    view: new ol.View({
-        center: ol.proj.fromLonLat([19.944544, 50.049683]),
-        zoom: 12
-    })
-});
+﻿var map = L.map('map').setView([50.049683, 19.944544], 12);
 
-const marker = new khtml.maplib.overlay.Marker({
-	position: new khtml.maplib.LatLng(50.068544, 20.013084),
-	icon: {
-		url: '../../Assets/Marker.png',
-		size: { width: 26, height: 32 },
-		origin: { x: 0, y: 0 },
-		anchor: {
-			x: "-10px",
-			y: "-32px"
-		}
-	},
-	shadow: {
-		url: "http://maps.gstatic.com/intl/de_de/mapfiles/ms/micons/pushpin_shadow.png",
-		size: {
-			width: "40px",
-			height: "32px"
-		},
-		origin: { x: 0, y: 0 },
-		anchor: { x: 0, y: -32 }
-	},
-	draggable: false,
-	title: "static"
-});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([50.068544, 20.013084]).addTo(map)
+    .bindPopup('All radios in location: 0 <br><br> <button class="btn">See all radios in location</button> <br><br> <button class="btn">Report alarm</button>');
+
+L.marker([49.9837, 20.0004]).addTo(map)
+    .bindPopup('All radios in location: 0 <br><br> <button class="btn">See all radios in location</button> <br><br> <button class="btn">Report alarm</button>');
+
+L.marker([50.0347, 19.9402]).addTo(map)
+    .bindPopup('All radios in location: 0 <br><br> <button class="btn">See all radios in location</button> <br><br> <button class="btn">Report alarm</button>');
+
+L.marker([50.0725, 19.9013]).addTo(map)
+    .bindPopup('All radios in location: 0 <br><br> <button class="btn">See all radios in location</button> <br><br> <button class="btn">Report alarm</button>');
