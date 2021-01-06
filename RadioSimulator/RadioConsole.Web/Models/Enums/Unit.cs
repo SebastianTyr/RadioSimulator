@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RadioConsole.Web.Models.EmailService
+namespace RadioConsole.Web.Models.Enums
 {
-    interface IEmailSender
+    public enum Unit
     {
-        void SendEmail(Message message);
+        Police,
+        Emergency,
+        FireBrigade
     }
 }

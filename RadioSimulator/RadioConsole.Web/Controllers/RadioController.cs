@@ -8,14 +8,15 @@ using RadioConsole.Web.Models;
 using RadioConsole.Web.Models.Validators;
 using RadioConsole.Web.Database;
 using RadioConsole.Web.Entities;
-using RadioConsole.Web.Models.EmailService;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace RadioConsole.Web.Controllers
 {
     public class RadioController : Controller
     {
         private readonly RadioDBContext _dbContext;
-        private readonly EmailSender _emailSender;
+
         public RadioController(RadioDBContext dbContext)
         {
             _dbContext = dbContext;
@@ -28,9 +29,6 @@ namespace RadioConsole.Web.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            var message = new Message(new string[] { "seb.tyralski98@interia.pl" }, "Test email", "This is the content from our email.");
-            _emailSender.SendEmail(message);
-
             return View();
         }
 
@@ -70,7 +68,7 @@ namespace RadioConsole.Web.Controllers
             _dbContext.Delete(radio);
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Register");
+            return RedirectToAction("RegisterConfirmation");
         }
     }
 }

@@ -9,6 +9,7 @@
         <th>Signal Strength</th>
         <th>Battery Level</th>
         <th>Mode</th>
+        <th>Unit</th>
     </tr>
     @foreach (var item in ViewBag.Items)
     {
@@ -20,9 +21,11 @@
             <td>@item.SignalStrength</td>
             <td>@item.BatteryLevel</td>
             <td>@item.Mode</td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            <td>@item.Unit</td>
+        </tr>
+        <tr>
+            <td><a asp-action="Edit" asp-route-id="Id">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="Id">Delete</a></td>
         </tr>
     }
 </table>
