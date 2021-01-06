@@ -17,6 +17,8 @@ namespace RadioConsole.Web.Models.Validators
             RuleFor(x => x.Type).IsInEnum();
 
             RuleFor(x => x.Mode).IsInEnum();
+
+            RuleFor(x => x.Unit).IsInEnum();
         }
     }
 }

@@ -13,5 +13,6 @@ namespace RadioConsole.Web.Entities
         public int SignalStrength { get; set; }
         public int BatteryLevel { get; set; }
         public ActualMode Mode { get; set; }
+        public Unit Unit { get; set; }
     }
 }

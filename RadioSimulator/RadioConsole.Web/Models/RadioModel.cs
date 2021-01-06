@@ -12,5 +12,6 @@ namespace RadioConsole.Web.Models
         public int SignalStrength { get; set; }
         public int BatteryLevel { get; set; }
         public ActualMode Mode { get; set; }
+        public Unit Unit { get; set; }
     }
 }
