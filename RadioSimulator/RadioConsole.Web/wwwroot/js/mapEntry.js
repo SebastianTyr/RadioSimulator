@@ -4,41 +4,30 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([50.068544, 20.013084]).addTo(map)
-    .bindPopup('Police <br><br> <button id="policeReport" class="btn" onlick="policeAlarm()">Report alarm</button>');
+var policeMarker = L.marker([50.068544, 20.013084]).addTo(map);
 
 L.marker([50.0347, 19.9402]).addTo(map)
-    .bindPopup('Emergency <br><br> <button id="emergencyReport" class="btn" onlick="emergencyAlarm()">Report alarm</button>');
+    .bindPopup('Emergency <br><br> <button id="emergencyReport" class="btn">Report alarm</button>');
 
 L.marker([50.0725, 19.9013]).addTo(map)
-    .bindPopup('Fire Brigade <br><br> <button id="fireReport" class="btn" onlick="fireAlarm()">Report alarm</button>');
+    .bindPopup('Fire Brigade <br><br> <button id="fireReport" class="btn">Report alarm</button>');
 
-function policeAlarm() {
+function policeMarker() {
     L.Routing.control({
         waypoints: [
             L.latLng(50.068544, 20.013084),
-            L.latLng(50.065489, 19.975024)
+            L.latLng(50.055701, 19.977236)
         ],
-        routeWhileDragging: true
+        routeWhileDragging: true,
+        createMarker: function marker(i, wp, n) {
+            return L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
+                .bindPopup("");
+        }
     }).addTo(map);
-};
+}
 
-function emergencyAlarm() {
-    L.Routing.control({
-        waypoints: [
-            L.latLng(50.0347, 19.9402),
-            L.latLng(50.044383, 19.926755)
-        ],
-        routeWhileDragging: true
-    }).addTo(map);
-};
+var policeAlarm = $('<div>Police Office <br><br> <button id="policeReport" class="btn">Report alarm</button></div>').click(function () {
+    policeMarker();
+})[0];
 
-function fireAlarm() {
-    L.Routing.control({
-        waypoints: [
-            L.latLng(50.0725, 19.9013),
-            L.latLng(50.061908, 19.941013)
-        ],
-        routeWhileDragging: true
-    }).addTo(map);
-};
+policeMarker.bindPopup(policeAlarm);
