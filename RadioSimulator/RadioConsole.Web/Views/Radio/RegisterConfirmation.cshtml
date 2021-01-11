@@ -24,8 +24,8 @@
             <td>@item.Unit</td>
         </tr>
         <tr>
-            <td><a asp-action="Edit" asp-route-id="Id">Edit</a></td>
-            <td><a asp-action="Delete" asp-route-id="Id">Delete</a></td>
+            <td><a asp-controller="Edit" asp-action="EditRadio" asp-route-id="@item.Id">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
         </tr>
     }
 </table>
