@@ -79,32 +79,10 @@
 </form>
 
 <div>
-    <button class="btn" onclick="window.location.href='./RegisterConfirmation'">View registred radios</button>
+    <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-secondary">RegisterConfirmation</a>
 </div>
 
-<style>
-    .btn {
-        color: #fff;
-        background-color: #1b6ec2;
-        border-color: #1861ac;
-    }
-</style>
-
 <br />
-
-@* OSM Component *@
-
-
-@*<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
-    <style>
-        .map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-
-    <div id="map" class="map"></div>*@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
