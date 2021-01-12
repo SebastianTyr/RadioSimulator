@@ -13,7 +13,7 @@ var emergency = L.marker([50.0347, 19.9402]).addTo(map)
 var fireBrigade = L.marker([50.0725, 19.9013]).addTo(map)
 
 ///SECTION IIII - Handling map routing////////
-function policeMarker() {
+function policeMarker(data) {
     L.Routing.control({
         waypoints: [
             L.latLng(50.068544, 20.013084),
@@ -22,7 +22,7 @@ function policeMarker() {
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
-                .bindPopup("");
+                .bindPopup("Police radio <br> <b>Name: </b>");
         }
     }).addTo(map);
 }
@@ -36,7 +36,7 @@ function emergencyMarker() {
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
-                .bindPopup("");
+                .bindPopup("Emergency radio < br > <b>Name: </b>");
         }
     }).addTo(map);
 }
@@ -50,25 +50,25 @@ function fireMarker() {
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
-                .bindPopup("");
+                .bindPopup("Fire Brigade radio < br > <b>Name: </b>");
         }
     }).addTo(map);
 }
 
 ///SECTION IV - Binding popups with alarm functions////////
-var policeAlarm = $('<div>Police Office <br><br> <button id="policeReport" class="btn">Report alarm</button></div>').click(function () {
+var policeAlarm = $('<div>Police Office <br><br> <button id="policeReport" class="popupBtn">Report alarm</button></div>').click(function () {
     policeMarker();
 })[0];
 
 police.bindPopup(policeAlarm);
 
-var emergencyAlarm = $('<div>Emergency <br><br> <button id="emergencyReport" class="btn">Report alarm</button></div>').click(function () {
+var emergencyAlarm = $('<div>Emergency <br><br> <button id="emergencyReport" class="popupBtn">Report alarm</button></div>').click(function () {
     emergencyMarker();
 })[0];
 
 emergency.bindPopup(emergencyAlarm);
 
-var fireAlarm = $('<div>Fire Brigade <br><br> <button id="fireReport" class="btn">Report alarm</button></div>').click(function () {
+var fireAlarm = $('<div>Fire Brigade <br><br> <button id="fireReport" class="popupBtn">Report alarm</button></div>').click(function () {
     fireMarker();
 })[0];
 

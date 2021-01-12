@@ -47,7 +47,8 @@ namespace RadioConsole.Web.Controllers
                 SerialNumber = model.SerialNumber,
                 SignalStrength = model.SignalStrength,
                 BatteryLevel = model.BatteryLevel,
-                Mode = model.Mode
+                Mode = model.Mode,
+                Unit = model.Unit
             };
 
             _dbContext.Add(radioEntity);

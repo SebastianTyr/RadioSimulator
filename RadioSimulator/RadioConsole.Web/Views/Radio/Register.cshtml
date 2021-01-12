@@ -8,14 +8,14 @@
 <form method="POST" id="formData">
     <div class="form-group">
         <label asp-for="Name">Radio name</label>
-        <input asp-for="Name" class="form-control" v-model="Name" />
+        <input asp-for="Name" class="form-control"/>
         <span asp-validation-for="Name"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Type">Radio Type</label>
 
-        <select asp-for="Type" class="form-control" v-model="Type">
+        <select asp-for="Type" class="form-control">
             Choose radio type
             <option value="MobileDevice">Mobile Device</option>
             <option value="CarDevice">Car Device</option>
@@ -28,26 +28,26 @@
 
     <div class="form-group">
         <label asp-for="SerialNumber">Serial Number</label>
-        <input asp-for="SerialNumber" class="form-control" v-model="SerialNumber" />
+        <input asp-for="SerialNumber" class="form-control"/>
         <span asp-validation-for="SerialNumber"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="SignalStrength">Signal Strength</label>
-        <input asp-for="SignalStrength" class="form-control" v-model="SignalStrencht" />
+        <input asp-for="SignalStrength" class="form-control"/>
         <span asp-validation-for="SignalStrength"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="BatteryLevel">Battery Level</label>
-        <input asp-for="BatteryLevel" class="form-control" v-model="BatteryLevel" />
+        <input asp-for="BatteryLevel" class="form-control"/>
         <span asp-validation-for="BatteryLevel"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Mode">Radio Type</label>
 
-        <select asp-for="Mode" class="form-control" v-model="Mode">
+        <select asp-for="Mode" class="form-control">
             Choose radio type
             <option value="VoiceCall">Voice Call</option>
             <option value="DataTransit">Data Transit</option>
@@ -61,7 +61,7 @@
     <div class="form-group">
         <label asp-for="Unit">Radio Type</label>
 
-        <select asp-for="Unit" class="form-control" v-model="Mode">
+        <select asp-for="Unit" class="form-control">
             Choose radio type
             <option value="Police">Police</option>
             <option value="Emergency">Emergency</option>
@@ -79,8 +79,19 @@
 </form>
 
 <div>
-    <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-secondary">RegisterConfirmation</a>
+    <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
+
+<style>
+    .popupBtn {
+        color: #fff;
+        background-color: #1b6ec2;
+        border-color: #1861ac;
+        border-radius: 8px;
+        height: 40px;
+        font-size: 15px;
+    }
+</style>
 
 <br />
 
@@ -107,5 +118,6 @@
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
-    <script src="~/js/mapEntry.js"></script>
+    <script type="text/javascript" src="~/js/map.js">
+    </script>
 }

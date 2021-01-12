@@ -31,10 +31,10 @@ namespace RadioConsole.Web
         {
             services.AddControllersWithViews();
 
-            services.AddMvc().AddFluentValidation(fv =>
+            services.AddMvc().AddFluentValidation(validation =>
             {
-                fv.RegisterValidatorsFromAssemblyContaining<RadioModelValidator>();
-                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                validation.RegisterValidatorsFromAssemblyContaining<RadioModelValidator>();
+                validation.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 

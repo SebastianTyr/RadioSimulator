@@ -24,7 +24,5 @@ namespace RadioConsole.Web.Database
         {
             //fluent configuration
         }
-
-        public DbSet<RadioConsole.Web.Models.RadioModel> RadioModel { get; set; }
     }
 }
