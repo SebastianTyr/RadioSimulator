@@ -6,6 +6,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        <div id="success-alert" class="alert alert-success" style="display: none">Record updated</div>
+        <div id="error-alert" class="alert alert-danger" style="display: none">Ups.. something goes wrong while record updating, make sure that all fields are filed properly</div>
+
         <form method="post">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -81,4 +84,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/registerNewRadio.js"></script>
 }

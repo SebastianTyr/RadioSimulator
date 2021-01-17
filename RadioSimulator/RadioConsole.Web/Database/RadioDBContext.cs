@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using RadioConsole.Web.Entities;
 using RadioConsole.Web.Models;
@@ -11,18 +12,40 @@ namespace RadioConsole.Web.Database
         {
         }
 
+        public RadioEntity RetrieveDataToEdit(int id)
+        {
+            var rawData = Radios.Where(r => r.Id == id).FirstOrDefault();
+
+            return rawData;
+        }
+
         public DbSet<RadioEntity> Radios { get; set; }
+
+        //public RadioEntity UpdateRadio(RadioEntity updatedRadio)
+        //{
+        //    var entity = Radios.Attach(updatedRadio);
+        //    entity.Context.Entry(updatedRadio).State = EntityState.Modified;
+
+        //    return updatedRadio;
+        //}
 
         public RadioEntity Delete(RadioEntity deletedRadio)
         {
             var entity = Radios.Attach(deletedRadio);
             entity.Context.Entry(deletedRadio).State = EntityState.Deleted;
+
             return deletedRadio;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //fluent configuration
+            builder.Entity<RadioEntity>(entity =>
+            {
+
+                entity.HasKey(r => r.Id);
+            });
+
+            base.OnModelCreating(builder);
         }
     }
 }

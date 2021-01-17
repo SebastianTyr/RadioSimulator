@@ -2,7 +2,7 @@
     if ($(this).valid()) {
         let formData = new FormData(document.forms[0]);
         let alertEl = document.getElementById('success-alert');
-        fetch('/Radio/Register', {
+        fetch('/{controller}/{action}', {
             method: 'POST',
             body: new URLSearchParams(formData)
         })

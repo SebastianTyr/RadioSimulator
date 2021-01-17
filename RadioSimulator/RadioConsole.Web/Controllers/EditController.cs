@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RadioConsole.Web.Database;
 using RadioConsole.Web.Entities;
+using RadioConsole.Web.Models;
 
 namespace RadioConsole.Web.Controllers
 {
@@ -25,33 +26,17 @@ namespace RadioConsole.Web.Controllers
         [HttpGet]
         public IActionResult EditRadio()
         {
-            return View("EditRadio");
+            ViewBag.Items = _dbContext.Radios;
+            return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditRadio(int id, [Bind("Id, Name, Type, SerialNumber, SignalStrencht, BatteryLevel, Mode, Unit")] RadioEntity radioEntity)
+        [HttpPut]
+        public async Task<IActionResult> EditRadio(RadioEntity radioEntity)
         {
-            if(id != radioEntity.Id)
-            {
-                return NotFound();
-            }
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _dbContext.Update(radioEntity);
-                    await _dbContext.SaveChangesAsync();
-                    return RedirectToAction(nameof(EditRadio));
-                }
-                catch (DbUpdateException ex)
-                {
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                        "Try again, and if the problem persists, " +
-                        "see your system administrator.");
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            return View(radioEntity);
+            _dbContext.Update(radioEntity);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("EditRadio");
         }
     }
 }
