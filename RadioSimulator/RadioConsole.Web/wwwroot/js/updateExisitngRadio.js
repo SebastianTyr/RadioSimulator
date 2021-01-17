@@ -1,8 +1,8 @@
-﻿document.forms[0].onsubmit = function() {
+﻿document.forms[0].onsubmit = function () {
     if ($(this).valid()) {
         let formData = new FormData(document.forms[0]);
         let alertEl = document.getElementById('success-alert');
-        fetch('/Radio/Register', {
+        fetch('/Edit/EditRadio', {
             method: 'POST',
             body: new URLSearchParams(formData)
         })
@@ -15,3 +15,4 @@
     }
     return false;
 };
+///AJAX REQUEST TODO/////

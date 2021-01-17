@@ -21,14 +21,6 @@ namespace RadioConsole.Web.Database
 
         public DbSet<RadioEntity> Radios { get; set; }
 
-        //public RadioEntity UpdateRadio(RadioEntity updatedRadio)
-        //{
-        //    var entity = Radios.Attach(updatedRadio);
-        //    entity.Context.Entry(updatedRadio).State = EntityState.Modified;
-
-        //    return updatedRadio;
-        //}
-
         public RadioEntity Delete(RadioEntity deletedRadio)
         {
             var entity = Radios.Attach(deletedRadio);

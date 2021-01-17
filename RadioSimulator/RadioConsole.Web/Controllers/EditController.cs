@@ -24,19 +24,32 @@ namespace RadioConsole.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditRadio()
+        public IActionResult EditRadio(string id)
         {
-            ViewBag.Items = _dbContext.Radios;
-            return View();
+            int radioId = Convert.ToInt32(id);
+            var rawData = _dbContext.Radios.Find(radioId);
+
+            return View(rawData);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> EditRadio(RadioEntity radioEntity)
+        [HttpPost]
+        public async Task<IActionResult> EditRadio(RadioModel model)
         {
-            _dbContext.Update(radioEntity);
+            var rawData = _dbContext.Radios.Find(model.Id);
+            if (rawData != null)
+            {
+                rawData.Name = model.Name;
+                rawData.Type = model.Type;
+                rawData.SerialNumber = model.SerialNumber;
+                rawData.SignalStrength = model.SignalStrength;
+                rawData.BatteryLevel = model.BatteryLevel;
+                rawData.Mode = model.Mode;
+                rawData.Unit = model.Unit;
+            }
+
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("EditRadio");
+            return View("EditRadio");
         }
     }
 }
