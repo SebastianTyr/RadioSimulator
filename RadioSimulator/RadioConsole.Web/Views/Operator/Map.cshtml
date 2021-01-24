@@ -29,6 +29,12 @@
 
 <div id="radioMap" class="map"></div>
 
+<br />
+
+<div>
+    <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
+</div>
+
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
