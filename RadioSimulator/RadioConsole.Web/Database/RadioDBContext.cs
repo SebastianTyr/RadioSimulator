@@ -12,13 +12,6 @@ namespace RadioConsole.Web.Database
         {
         }
 
-        public RadioEntity RetrieveDataToEdit(int id)
-        {
-            var rawData = Radios.Where(r => r.Id == id).FirstOrDefault();
-
-            return rawData;
-        }
-
         public DbSet<RadioEntity> Radios { get; set; }
 
         public RadioEntity Delete(RadioEntity deletedRadio)

@@ -82,42 +82,7 @@
     <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
 
-<style>
-    .popupBtn {
-        color: #fff;
-        background-color: #1b6ec2;
-        border-color: #1861ac;
-        border-radius: 8px;
-        height: 40px;
-        font-size: 15px;
-    }
-</style>
-
-<br />
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin="" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
-
-<style>
-    .map {
-        height: 400px;
-        width: 100%
-    }
-</style>
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-
-<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-
-<div id="radioMap" class="map"></div>
-
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
-    <script type="text/javascript" src="~/js/map.js">
-    </script>
 }

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RadioConsole.Web.Models.RadioModel">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgABAAIAAAAAAIAAgAAQAAAEAAAAAUQAgAAAAAAA=</HashCode>
+      <FileName>Models\RadioModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ActualMode" />
+      <Property Name="Type1" />
+      <Property Name="Unit1" />
+      <Property Name="RadioDBContext" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RadioConsole.Web.Database.RadioDBContext">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAEAEAACAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Database\RadioDBContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RadioController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RadioConsole.Web.Controllers.RadioController">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAEAAAAAEAAEBAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\RadioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioConsole.Web.Controllers.OperatorController">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\OperatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadioConsole.Web.Controllers.UsersController">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controllers\UsersController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RadioController" />
+      <Property Name="OperatorController" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="RadioConsole.Web.Models.Enums.ActualMode">
+    <Position X="9.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Enums\ActualMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RadioConsole.Web.Models.Enums.Type">
+    <Position X="7.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enums\Type.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RadioConsole.Web.Models.Enums.Unit">
+    <Position X="5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Enums\Unit.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

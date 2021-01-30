@@ -3,6 +3,8 @@
       crossorigin="" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
 
+<link rel="stylesheet" href="./css/map.css" />
+
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -35,9 +37,18 @@
     <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
 
+<div>
+    @foreach(var items in ViewBag.Items)
+    {
+        <p>@items.Name</p>
+        <p>@items.SerialNumber</p>
+    }
+</div>
+
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
     <script type="text/javascript" src="~/js/map.js">
+        var rawData = 'ViewBag.Items'
     </script>
 }

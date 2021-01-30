@@ -19,10 +19,13 @@ function policeMarker(data) {
             L.latLng(50.068544, 20.013084),
             L.latLng(50.055701, 19.977236)
         ],
+        lineOptions: {
+            styles: [{ className: 'animate' }] // Adding animate class
+        },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
-                .bindPopup("Police radio <br> <b>Name: </b>");
+                .bindPopup(rawData);
         }
     }).addTo(map);
 }
@@ -33,6 +36,9 @@ function emergencyMarker() {
             L.latLng(50.0347, 19.9402),
             L.latLng(50.059485, 19.942185)
         ],
+        lineOptions: {
+            styles: [{ className: 'animate' }] // Adding animate class
+        },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
@@ -47,6 +53,9 @@ function fireMarker() {
             L.latLng(50.0725, 19.9013),
             L.latLng(50.016200, 19.890223)
         ],
+        lineOptions: {
+            styles: [{ className: 'animate' }] // Adding animate class
+        },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
