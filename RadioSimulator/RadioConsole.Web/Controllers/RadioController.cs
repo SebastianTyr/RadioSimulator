@@ -10,6 +10,7 @@ using RadioConsole.Web.Database;
 using RadioConsole.Web.Entities;
 using MimeKit;
 using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RadioConsole.Web.Controllers
 {
@@ -26,12 +27,14 @@ namespace RadioConsole.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Register(RadioModel model)
         {
@@ -57,6 +60,7 @@ namespace RadioConsole.Web.Controllers
             return RedirectToAction("RegisterConfirmation");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditRadio(string id)
         {
@@ -66,6 +70,7 @@ namespace RadioConsole.Web.Controllers
             return View(rawData);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditRadio(RadioModel model)
         {
@@ -94,6 +99,7 @@ namespace RadioConsole.Web.Controllers
             return RedirectToAction("RegisterConfirmation");
         }
 
+        [Authorize(Roles = "Admin, User")]
         [HttpGet]
         public IActionResult RegisterConfirmation()
         {

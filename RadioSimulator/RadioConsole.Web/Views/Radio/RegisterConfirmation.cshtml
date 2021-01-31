@@ -1,4 +1,5 @@
-﻿@model RadioModel
+﻿@using System.Net.Http
+@model RadioModel
 
 <table style="width: 100%">
     <tr>
@@ -22,10 +23,19 @@
             <td>@item.BatteryLevel</td>
             <td>@item.Mode</td>
             <td>@item.Unit</td>
-            <td>
-                <a asp-action="EditRadio" asp-route-id="@item.Id">Edit |</a>
-                <a asp-action="Delete" asp-route-id="@item.Id"> Delete</a>
-            </td>
+            @if (Context.User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="EditRadio" asp-route-id="@item.Id">Edit |</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a asp-controller="Operator" asp-action="Map">Back to map</a>
+                </td>
+            }
         </tr>
     }
 </table>

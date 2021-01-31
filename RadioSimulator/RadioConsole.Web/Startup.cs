@@ -40,6 +40,14 @@ namespace RadioConsole.Web
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             services.AddDbContext<RadioDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RadioSimulator")));
+
+            services.AddAuthentication("CookieAuthentication")
+                .AddCookie("CookieAuthemtication", config =>
+                {
+                    config.Cookie.Name = "LoginCookie";
+                    config.LoginPath = "/Login/DispatcherLogin";
+                    config.LoginPath = "/Login/OperatorLogin";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +67,8 @@ namespace RadioConsole.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
