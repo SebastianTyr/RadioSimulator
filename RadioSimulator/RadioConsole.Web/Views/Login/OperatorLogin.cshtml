@@ -1,4 +1,6 @@
-﻿<h2>Great! Please login as Operator with following credenitals</h2>
+﻿@model UsersModel
+
+<h2>Great! Please login as Operator with following credenitals</h2>
 
 <p>Login: operator</p>
 <p>Password: operator1</p>
@@ -6,16 +8,15 @@
 <form method="post">
     <div class="form-group">
         <label>Username</label>
-        <input class="form-control" />
+        <input asp-for="Username" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Password</label>
-        <input class="form-control" />
+        <input asp-for="Password" type="password" class="form-control" />
     </div>
 
     <div class="form-group">
         <button class="btn btn-primary" id="submit">Login</button>
     </div>
-
 </form>

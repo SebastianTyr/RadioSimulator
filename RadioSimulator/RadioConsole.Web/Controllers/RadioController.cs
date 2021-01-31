@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace RadioConsole.Web.Controllers
 {
+    [Authorize]
     public class RadioController : Controller
     {
         private readonly RadioDBContext _dbContext;
@@ -99,6 +100,7 @@ namespace RadioConsole.Web.Controllers
             return RedirectToAction("RegisterConfirmation");
         }
 
+        [Authorize(Policy = "UserPolicy")]
         [Authorize(Roles = "Admin, User")]
         [HttpGet]
         public IActionResult RegisterConfirmation()

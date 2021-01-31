@@ -24,20 +24,23 @@ namespace RadioConsole.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult DispatcherLogin([Bind] UsersModel user)
+        public IActionResult DispatcherLogin([Bind] UsersModel model)
         {
-            var users = new UsersModel();
-            var allUsers = users.GetUsers().FirstOrDefault();
-            if (users.GetUsers().Any(u => u.Username == user.Username))
+            var user = new UsersModel().GetUsers().Where(u => u.Username == model.Username).SingleOrDefault();
+
+            if (user != null)
             {
                 var userClaims = new List<Claim>()
                 {
-                new Claim(ClaimTypes.Name, user.Username)
+                    new Claim("Username", user.Username),
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, user.Role)
                  };
 
-                var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
+                var userIdentity = new ClaimsIdentity(userClaims, "User Identity");
 
-                var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
+                var userPrincipal = new ClaimsPrincipal(new[] { userIdentity });
                 HttpContext.SignInAsync(userPrincipal);
 
                 return RedirectToAction("Register", "Radio");
@@ -47,20 +50,22 @@ namespace RadioConsole.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult OperatorLogin([Bind] UsersModel user)
+        public IActionResult OperatorLogin([Bind] UsersModel model)
         {
-            var users = new UsersModel();
-            var allUsers = users.GetUsers().FirstOrDefault();
-            if (users.GetUsers().Any(u => u.Username == user.Username))
+            var user = new UsersModel().GetUsers().Where(x => x.Username == model.Username).SingleOrDefault();
+
+            if (user != null)
             {
                 var userClaims = new List<Claim>()
                 {
-                new Claim(ClaimTypes.Name, user.Username)
-                 };
+                    new Claim("Username", user.Username),
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email)
+                };
 
-                var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
+                var userIdentity = new ClaimsIdentity(userClaims, "User Identity");
 
-                var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
+                var userPrincipal = new ClaimsPrincipal(new[] { userIdentity });
                 HttpContext.SignInAsync(userPrincipal);
 
                 return RedirectToAction("Map", "Operator");

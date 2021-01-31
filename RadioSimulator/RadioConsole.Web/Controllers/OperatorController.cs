@@ -9,6 +9,7 @@ using RadioConsole.Web.Models.Enums;
 
 namespace RadioConsole.Web.Controllers
 {
+    [Authorize]
     public class OperatorController : Controller
     {
         private readonly RadioDBContext _dbContext;

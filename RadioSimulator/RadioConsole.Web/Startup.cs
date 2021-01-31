@@ -14,6 +14,9 @@ using RadioConsole.Web.Models.Validators;
 using RadioConsole.Web.Database;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using RadioConsole.Web.Authorization;
 
 namespace RadioConsole.Web
 {
@@ -42,12 +45,24 @@ namespace RadioConsole.Web
             services.AddDbContext<RadioDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RadioSimulator")));
 
             services.AddAuthentication("CookieAuthentication")
-                .AddCookie("CookieAuthemtication", config =>
+                 .AddCookie("CookieAuthentication", config =>
+                 {
+                     config.Cookie.Name = "UserLoginCookie";   
+                     config.LoginPath = "/Login/DispatcherLogin";
+                     config.LoginPath = "/Login/OperatorLogin";
+                 });
+
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("UserPolicy", policyBuilder =>
                 {
-                    config.Cookie.Name = "LoginCookie";
-                    config.LoginPath = "/Login/DispatcherLogin";
-                    config.LoginPath = "/Login/OperatorLogin";
+                    policyBuilder.UserRequireCustomClaim(ClaimTypes.Name);
+                    policyBuilder.UserRequireCustomClaim(ClaimTypes.Email);
                 });
+            });
+
+            services.AddScoped<IAuthorizationHandler, PoliciesAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
