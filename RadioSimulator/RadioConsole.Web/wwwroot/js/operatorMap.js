@@ -13,7 +13,7 @@ var emergency = L.marker([50.0347, 19.9402]).addTo(map)
 var fireBrigade = L.marker([50.0725, 19.9013]).addTo(map)
 
 ///SECTION IIII - Handling map routing////////
-function policeMarker(data) {
+function policeMarker() {
     L.Routing.control({
         waypoints: [
             L.latLng(50.068544, 20.013084),
@@ -23,9 +23,11 @@ function policeMarker(data) {
             styles: [{ className: 'animate' }] // Adding animate class
         },
         routeWhileDragging: true,
-        createMarker: function marker(i, wp, n) {
+        createMarker: function marker(i, _wp, n) {
+            //var popupContent = $('Police radio <br> <b>Name: </b>'+data)
+            var popupContent = JSON.parse(rawData);
             return L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
-                .bindPopup(rawData);
+                .bindPopup(popupContent);
         }
     }).addTo(map);
 }
@@ -42,7 +44,7 @@ function emergencyMarker() {
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
             return L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
-                .bindPopup("Emergency radio < br > <b>Name: </b>");
+                .bindPopup("Emergency radio <br> <b>Name: </b>");
         }
     }).addTo(map);
 }

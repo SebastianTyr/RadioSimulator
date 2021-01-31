@@ -38,7 +38,23 @@
 </div>
 
 <div>
-    @foreach(var items in ViewBag.Items)
+    @foreach(var items in ViewBag.Police)
+    {
+        <p>@items.Name</p>
+        <p>@items.SerialNumber</p>
+    }
+</div>
+
+<div>
+    @foreach (var items in ViewBag.Emergency)
+    {
+        <p>@items.Name</p>
+        <p>@items.SerialNumber</p>
+    }
+</div>
+
+<div>
+    @foreach (var items in ViewBag.FireBrigade)
     {
         <p>@items.Name</p>
         <p>@items.SerialNumber</p>
@@ -48,7 +64,10 @@
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
-    <script type="text/javascript" src="~/js/map.js">
-        var rawData = 'ViewBag.Items'
+    <script type="text/javascript" src="~/js/operatorMap.js">
+        var rawData = @ViewBag.Police;
+        var data = rawData.forEach(result => {
+            result.Name
+        })
     </script>
 }
