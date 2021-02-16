@@ -1,4 +1,10 @@
-﻿<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <a class="btn btn-primary" style="float: right" asp-controller="Users" asp-action="Users">Logout</a>
+    <br />
+}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin="" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
@@ -38,7 +44,7 @@
 </div>
 
 <div>
-    @foreach(var items in ViewBag.Police)
+    @foreach (var items in ViewBag.Police)
     {
         <p>@items.Name</p>
         <p>@items.SerialNumber</p>

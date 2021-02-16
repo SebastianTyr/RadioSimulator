@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RadioConsole.Web.Models
+namespace RadioConsole.Web.Entities
 {
-    public class UsersModel
+    public class UsersEntity
     {
         public int Id { get; set; }
         public string Username { get; set; }

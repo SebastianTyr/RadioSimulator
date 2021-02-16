@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using RadioConsole.Web.Entities;
@@ -13,6 +14,8 @@ namespace RadioConsole.Web.Database
         }
 
         public DbSet<RadioEntity> Radios { get; set; }
+
+        public DbSet<UsersEntity> Users { get; set; }
 
         public RadioEntity Delete(RadioEntity deletedRadio)
         {

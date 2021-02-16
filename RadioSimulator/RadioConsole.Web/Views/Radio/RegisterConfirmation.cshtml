@@ -1,6 +1,12 @@
 ﻿@using System.Net.Http
 @model RadioModel
 
+@if (User.Identity.IsAuthenticated)
+{
+    <a class="btn btn-primary" style="float: right" asp-controller="Users" asp-action="Users">Logout</a>
+    <br />
+}
+
 <table style="width: 100%">
     <tr>
         <th>ID</th>

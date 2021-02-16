@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using RadioConsole.Web.Models;
+using RadioConsole.Web.Database;
+using RadioConsole.Web.Entities;
 
 namespace RadioConsole.Web.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly RadioDBContext _dbContext;
+
+        public LoginController(RadioDBContext dBContext)
+        {
+            _dbContext = dBContext;
+        }
+
         [HttpGet]
         public IActionResult OperatorLogin()
         {
@@ -26,7 +35,7 @@ namespace RadioConsole.Web.Controllers
         [HttpPost]
         public IActionResult DispatcherLogin([Bind] UsersModel model)
         {
-            var user = new UsersModel().GetUsers().Where(u => u.Username == model.Username).SingleOrDefault();
+            var user = _dbContext.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
 
             if (user != null)
             {
@@ -52,7 +61,7 @@ namespace RadioConsole.Web.Controllers
         [HttpPost]
         public IActionResult OperatorLogin([Bind] UsersModel model)
         {
-            var user = new UsersModel().GetUsers().Where(x => x.Username == model.Username).SingleOrDefault();
+            var user = _dbContext.Users.Where(x => x.Username == model.Username && x.Password == model.Password).SingleOrDefault();
 
             if (user != null)
             {
@@ -73,5 +82,22 @@ namespace RadioConsole.Web.Controllers
 
             return View(user);
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await HttpContext.SignOutAsync();
+        //    return RedirectToAction("Users", "Users");
+        //}
+
+        //public async Task SingOut(string redirectUri)
+        //{
+        //    await HttpContext.SignOutAsync("Cookies");
+        //    var prop = new AuthenticationProperties()
+        //    {
+        //        RedirectUri = redirectUri
+        //    };
+        //    await HttpContext.SignOutAsync("Users", prop);
+        //}
     }
 }
