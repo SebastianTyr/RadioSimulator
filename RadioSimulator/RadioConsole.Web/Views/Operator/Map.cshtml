@@ -1,10 +1,4 @@
-﻿@if (User.Identity.IsAuthenticated)
-{
-    <a class="btn btn-primary" style="float: right" asp-controller="Users" asp-action="Users">Logout</a>
-    <br />
-}
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+﻿<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin="" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
@@ -43,7 +37,16 @@
     <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
 
-<div>
+<table style="width: 50%">
+    <tr>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Unit Type</th>
+        <th>Coordinates</th>
+    </tr>
+</table>
+
+@*<div>
     @foreach (var items in ViewBag.Police)
     {
         <p>@items.Name</p>
@@ -65,12 +68,12 @@
         <p>@items.Name</p>
         <p>@items.SerialNumber</p>
     }
-</div>
+</div>*@
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
-    <script type="text/javascript" src="~/js/operatorMap.js">
+    <script type="text/javascript" src="~/js/mapOpeators.js">
         var rawData = @ViewBag.Police;
         var data = rawData.forEach(result => {
             result.Name

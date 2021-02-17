@@ -23,11 +23,14 @@ function policeMarker() {
             styles: [{ className: 'animate' }] // Adding animate class
         },
         routeWhileDragging: true,
-        createMarker: function marker(i, _wp, n) {
-            //var popupContent = $('Police radio <br> <b>Name: </b>'+data)
-            var popupContent = JSON.parse(rawData);
-            return L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
-                .bindPopup(popupContent);
+        createMarker: function marker(i, wp, n) {
+            var marker =  L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
+                .bindPopup('');
+            marker.on('popupopen', function (e) {
+                var popup = e.popup;
+                popup.setContent(popup.getLatLng().lng + '<br />' + popup.getLatLng().lat);
+            });
+            return marker;
         }
     }).addTo(map);
 }
@@ -43,8 +46,14 @@ function emergencyMarker() {
         },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
-            return L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
-                .bindPopup("Emergency radio <br> <b>Name: </b>");
+            var marker =  L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
+                .bindPopup("Emergency radio <br /> <b>Name: </b>");
+            marker.on('popupopen', function (e) {
+                var popup = e.popup;
+                popup.setContent(popup.getLatLng().lng + '<br />' + popup.getLatLng().lat);
+            });
+
+            return marker;
         }
     }).addTo(map);
 }
@@ -60,8 +69,14 @@ function fireMarker() {
         },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
-            return L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
-                .bindPopup("Fire Brigade radio < br > <b>Name: </b>");
+            var marker =  L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
+                .bindPopup("Fire Brigade radio <br /> <b>Name: </b>");
+            marker.on('popupopen', function (e) {
+                var popup = e.popup;
+                popup.setContent(popup.getLatLng().lng + '<br />' + popup.getLatLng().lat);
+            });
+
+            return marker;
         }
     }).addTo(map);
 }
