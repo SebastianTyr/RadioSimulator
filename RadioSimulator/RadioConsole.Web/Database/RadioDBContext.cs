@@ -17,6 +17,8 @@ namespace RadioConsole.Web.Database
 
         public DbSet<UsersEntity> Users { get; set; }
 
+        public DbSet<IncidentEntity> Incidents { get; set; }
+
         public RadioEntity Delete(RadioEntity deletedRadio)
         {
             var entity = Radios.Attach(deletedRadio);
@@ -29,11 +31,12 @@ namespace RadioConsole.Web.Database
         {
             builder.Entity<RadioEntity>(entity =>
             {
-
                 entity.HasKey(r => r.Id);
             });
 
             base.OnModelCreating(builder);
         }
+
+        public DbSet<RadioConsole.Web.Models.IncidentModel> IncidentModel { get; set; }
     }
 }

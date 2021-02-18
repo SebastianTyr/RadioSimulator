@@ -37,38 +37,17 @@
     <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
 
-<table style="width: 50%">
-    <tr>
-        <th>Name</th>
-        <th>Serial Number</th>
-        <th>Unit Type</th>
-        <th>Coordinates</th>
-    </tr>
-</table>
-
-@*<div>
-    @foreach (var items in ViewBag.Police)
-    {
-        <p>@items.Name</p>
-        <p>@items.SerialNumber</p>
-    }
-</div>
+<br />
 
 <div>
-    @foreach (var items in ViewBag.Emergency)
-    {
-        <p>@items.Name</p>
-        <p>@items.SerialNumber</p>
-    }
+    <a asp-controller="Operator" asp-action="NewIncident" class="btn btn-outline-primary">New incident</a>
 </div>
 
+<br />
+
 <div>
-    @foreach (var items in ViewBag.FireBrigade)
-    {
-        <p>@items.Name</p>
-        <p>@items.SerialNumber</p>
-    }
-</div>*@
+    <a asp-controller="Operator" asp-action="IncidentList" class="btn btn-outline-primary">Incidents List</a>
+</div>
 
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RadioConsole.Web.Database;
-using RadioConsole.Web.Models.Enums;
+using RadioConsole.Web.Entities;
+using RadioConsole.Web.Models;
 
 namespace RadioConsole.Web.Controllers
 {
@@ -23,9 +24,44 @@ namespace RadioConsole.Web.Controllers
         [HttpGet]
         public IActionResult Map()
         {
-            ViewBag.Police = _dbContext.Radios.Where(u => u.Unit == Unit.Police).Take(1);
-            ViewBag.Emergency = _dbContext.Radios.Where(u => u.Unit == Unit.Emergency).Take(1);
-            ViewBag.FireBrigade = _dbContext.Radios.Where(u => u.Unit == Unit.FireBrigade).Take(1);
+            return View();
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet]
+        public IActionResult NewIncident()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpPost]
+        public async Task<IActionResult> NewIncident(IncidentModel model)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest();
+            //}
+
+            var incident = new IncidentEntity
+            {
+                Description = model.Description,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude,
+                Group = model.Group,
+            };
+
+            _dbContext.Add(incident);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("IncidentList");
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet]
+        public IActionResult IncidentList()
+        {
+            ViewBag.Items = _dbContext.Incidents;
             return View();
         }
     }

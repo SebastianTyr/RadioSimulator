@@ -1,0 +1,25 @@
+﻿@model IncidentModel
+
+<table style="width: 100%">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Group</th>
+    </tr>
+    @foreach (var item in ViewBag.Items)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Description</td>
+            <td>@item.Latitude</td>
+            <td>@item.Longitude</td>
+            <td>@item.Group</td>
+            <td>
+                <a asp-controller="Operator" asp-action="Map">Back to map</a>
+            </td>
+        </tr>
+
+    }
+</table>

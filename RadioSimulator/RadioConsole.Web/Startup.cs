@@ -37,7 +37,8 @@ namespace RadioConsole.Web
             services.AddMvc().AddFluentValidation(validation =>
             {
                 validation.RegisterValidatorsFromAssemblyContaining<RadioModelValidator>();
-                validation.RegisterValidatorsFromAssemblyContaining<RadioModelValidator>();
+                validation.RegisterValidatorsFromAssemblyContaining<RadioEntityValidation>();
+                validation.RegisterValidatorsFromAssemblyContaining<IncidentModelValidator>();
                 validation.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
