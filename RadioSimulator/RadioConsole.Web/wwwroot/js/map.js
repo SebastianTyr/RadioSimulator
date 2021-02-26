@@ -24,11 +24,11 @@ function policeMarker() {
         },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
-            var marker =  L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
+            var marker = L.marker(L.latLng(50.055701, 19.977236), { draggable: 'true' }).addTo(map)
                 .bindPopup('');
             marker.on('popupopen', function (e) {
                 var popup = e.popup;
-                popup.setContent(popup.getLatLng().lng + '<br />' + popup.getLatLng().lat);
+                popup.setContent(/*popup.getLatLng().lng + '<br />' + popup.getLatLng().lat*/rawData);
             });
             return marker;
         }
@@ -46,7 +46,7 @@ function emergencyMarker() {
         },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
-            var marker =  L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
+            var marker = L.marker(L.latLng(50.059485, 19.942185), { draggable: 'true' }).addTo(map)
                 .bindPopup("Emergency radio <br /> <b>Name: </b>");
             marker.on('popupopen', function (e) {
                 var popup = e.popup;
@@ -69,7 +69,7 @@ function fireMarker() {
         },
         routeWhileDragging: true,
         createMarker: function marker(i, wp, n) {
-            var marker =  L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
+            var marker = L.marker(L.latLng(50.016200, 19.890223), { draggable: 'true' }).addTo(map)
                 .bindPopup("Fire Brigade radio <br /> <b>Name: </b>");
             marker.on('popupopen', function (e) {
                 var popup = e.popup;

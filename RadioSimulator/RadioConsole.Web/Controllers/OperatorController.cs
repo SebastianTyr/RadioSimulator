@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using RadioConsole.Web.Database;
 using RadioConsole.Web.Entities;
 using RadioConsole.Web.Models;
+using RadioConsole.Web.Models.Enums;
 
 namespace RadioConsole.Web.Controllers
 {
@@ -24,6 +25,7 @@ namespace RadioConsole.Web.Controllers
         [HttpGet]
         public IActionResult Map()
         {
+            ViewBag.Police = _dbContext.Radios.Where(u => u.Unit == Unit.Police).Take(1);
             return View();
         }
 
