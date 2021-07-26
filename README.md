@@ -1,5 +1,4 @@
 # RadioSimulator
-- projekt zaliczeniowy z programowania w środowisku ASP.NET Core
 
 # Założenia
 - projekt zakłada stworzenie symulatora linii alarmowej 112, w którym użytkownik może wcielić się zarówno w dyspozytora prowadzącego ewidencję sprzętu, co w operatora linii mającego dostęp do mapy departamentów jednostek oraz wysyłania ich na miejsce zdarzenia
