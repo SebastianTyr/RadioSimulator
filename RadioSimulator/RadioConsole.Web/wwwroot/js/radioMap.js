@@ -28,7 +28,7 @@ function policeMarker() {
                 .bindPopup('');
             marker.on('popupopen', function (e) {
                 var popup = e.popup;
-                popup.setContent(/*popup.getLatLng().lng + '<br />' + popup.getLatLng().lat*/rawData);
+                popup.setContent(popup.getLatLng().lng + '<br />' + popup.getLatLng().lat);
             });
             return marker;
         }

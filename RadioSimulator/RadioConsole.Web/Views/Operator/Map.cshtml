@@ -34,13 +34,6 @@
 <br />
 
 <div>
-    @foreach (var items in ViewBag.Police)
-    {
-        <p>@items.Name</p>
-    }
-</div>
-
-<div>
     <a asp-controller="Radio" asp-action="RegisterConfirmation" class="btn btn-outline-primary">View registered radios</a>
 </div>
 
@@ -59,9 +52,6 @@
 @section scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/registerNewRadio.js"></script>
-    <script type="text/javascript" src="~/js/map.js">
-    </script>
-    <script type="text/javascript">
-        var rawData = @ViewBag.Police;
+    <script type="text/javascript" src="~/js/radioMap.js">
     </script>
 }
